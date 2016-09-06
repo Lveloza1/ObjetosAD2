@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package interfaz;
+
+import clases.Fraccionario;
 
 /**
  *
@@ -59,14 +60,28 @@ public class principal extends javax.swing.JFrame {
         jPanel1.add(txtDenominador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 70, 30));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 70, 20));
         jPanel1.add(txtNumerador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 70, 30));
+
+        txtDenominador3.setEditable(false);
         jPanel1.add(txtDenominador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 70, 30));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 70, 20));
+
+        txtNumerador3.setEditable(false);
         jPanel1.add(txtNumerador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 70, 30));
 
         cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 80, 30));
 
         cmdLimpiar.setText("Limpiar");
+        cmdLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdLimpiarActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -74,19 +89,59 @@ public class principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 32, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 37, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        int op, n1, n2, d1, d2;
+        Fraccionario f1, f2, f3 = null;
+        op = cmbOperacion.getSelectedIndex();
+        n1 = Integer.parseInt(txtNumerador1.getText());
+        n2 = Integer.parseInt(txtNumerador2.getText());
+        d1 = Integer.parseInt(txtDenominador1.getText());
+        d2 = Integer.parseInt(txtDenominador2.getText());
+        
+        f1 = new Fraccionario(n1, d1);
+        f2 = new Fraccionario(n2, d2);
+        
+        switch (op) {
+            case 0:
+                f3 = f1.sumar(f2);
+                
+                break;
+            case 1:
+                f3 = f1.restar(f2);
+                
+                break;
+            
+        }
+        txtNumerador3.setText("" + f3.getNumerador());
+        txtDenominador3.setText("" + f3.getDenominador());
+
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarActionPerformed
+        txtNumerador1.setText("");
+        txtNumerador2.setText("");
+        txtNumerador3.setText("");
+        txtDenominador1.setText("");
+        txtDenominador2.setText("");
+        txtDenominador3.setText("");
+        txtNumerador1.requestFocusInWindow();
+        cmbOperacion.setSelectedIndex(0);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
