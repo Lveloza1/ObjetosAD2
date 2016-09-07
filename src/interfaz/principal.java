@@ -113,24 +113,31 @@ public class principal extends javax.swing.JFrame {
         n2 = Integer.parseInt(txtNumerador2.getText());
         d1 = Integer.parseInt(txtDenominador1.getText());
         d2 = Integer.parseInt(txtDenominador2.getText());
-        try{
-        f1 = new Fraccionario(n1, d1);
-        f2 = new Fraccionario(n2, d2);
-        
-        switch (op) {
-            case 0:
-                f3 = f1.sumar(f2);
-                
-                break;
-            case 1:
-                f3 = f1.restar(f2);
-                
-                break;
-        
-        }
-        txtNumerador3.setText("" + f3.getNumerador());
-        txtDenominador3.setText("" + f3.getDenominador());
-        }catch(DenominadorCeroException e){
+        try {
+            f1 = new Fraccionario(n1, d1);
+            f2 = new Fraccionario(n2, d2);
+
+            switch (op) {
+                case 0:
+                    f3 = f1.sumar(f2);
+
+                    break;
+                case 1:
+                    f3 = f1.restar(f2);
+
+                    break;
+                case 2:
+                    f3 = f1.multiplicar(f2);
+                    
+                    break;
+                case 3:
+                    f3 = f1.dividir(f2);
+                    break;
+
+            }
+            txtNumerador3.setText("" + f3.getNumerador());
+            txtDenominador3.setText("" + f3.getDenominador());
+        } catch (DenominadorCeroException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_cmdCalcularActionPerformed

@@ -58,5 +58,22 @@ public class Fraccionario {
         
         
     }
+    public Fraccionario multiplicar(Fraccionario f2) throws DenominadorCeroException {
+       Fraccionario f;
+        int num, den;
+        num = this.numerador * f2.numerador;
+        den = this.denominador * f2.denominador;
+        f = new Fraccionario(num, den);
+        return f; 
+    }
+     public Fraccionario dividir(Fraccionario f2) throws DenominadorCeroException {
+       Fraccionario f;
+        int num, den;
+        num = this.numerador * f2.denominador;
+        den = this.denominador * f2.numerador;
+        f = new Fraccionario(num, den);
+        return f; 
+    }
+
 
 }
